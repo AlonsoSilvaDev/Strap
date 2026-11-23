@@ -1,19 +1,24 @@
 {
-  "skies": [
-    {
-      "name": "Galaxia morada",
-      "author": "AveriStrap",
-      "id": 13163229535
-    },
-    {
-      "name": "Cielo rojo aterrador",
-      "author": "AveriStrap",
-      "id": 136055162054954
-    },
-    {
-      "name": "Cielo rosa",
-      "author": "AveriStrap",
-      "id": 7571605027
-    }
-  ]
+    "skies":  [
+                  {
+                      "name":  "Galaxia morada",
+                      "author":  "AveriStrap",
+                      "id":  13163229535
+                  },
+                  {
+                      "name":  "Cielo rojo aterrador",
+                      "author":  "AveriStrap",
+                      "id":  136055162054954
+                  },
+                  {
+                      "name":  "Cielo rosa",
+                      "author":  "AveriStrap",
+                      "id":  7571605027
+                  },
+                  {
+                      "name":  "Nino Nakano",
+                      "author":  "DiegoSniper67671",
+                      "id":  12963216202
+                  }
+              ]
 }
