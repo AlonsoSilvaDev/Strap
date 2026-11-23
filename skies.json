@@ -1,3 +1,24 @@
 {
-  "skies": []
+  "skies": [
+    {
+      "name": "Galaxia morada 1",
+      "author": "AveriStrap",
+      "id": 13163229535
+    },
+    {
+      "name": "Galaxia morada 2",
+      "author": "AveriStrap",
+      "id": 13163231590
+    },
+    {
+      "name": "Cielo rojo aterrador",
+      "author": "AveriStrap",
+      "id": 136055162054954
+    },
+    {
+      "name": "Cielo rosa",
+      "author": "AveriStrap",
+      "id": 7571605027
+    }
+  ]
 }
