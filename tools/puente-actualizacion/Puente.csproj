@@ -1,0 +1,28 @@
+<!--
+Compilar (necesita el Setup.exe generado por "vpk pack"):
+dotnet publish tools/puente-actualizacion -c Release -p:SetupPath=C:\ruta\AveriStrap-win-Setup.exe -p:Version=1.1.5
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>AveriStrap-Installer</AssemblyName>
+    <RootNamespace>AveriStrap.Puente</RootNamespace>
+    <ApplicationIcon>../../build/win.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(SetupPath)' != ''">
+    <EmbeddedResource Include="$(SetupPath)" LogicalName="Setup.exe" />
+  </ItemGroup>
+
+  <!-- publicar sin el instalador dentro daría un actualizador inútil -->
+  <Target Name="RequireSetup" BeforeTargets="PrepareForPublish" Condition="'$(SetupPath)' == '' Or !Exists('$(SetupPath)')">
+    <Error Text="Indica -p:SetupPath con el Setup.exe generado por vpk." />
+  </Target>
+</Project>

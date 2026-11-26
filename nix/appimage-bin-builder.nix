@@ -1,0 +1,69 @@
+# SPDX-FileCopyrightText: 2026 Froststrap
+#
+# SPDX-License-Identifier: MPL-2.0
+
+{
+  lib,
+  fontconfig,
+  appimageTools,
+  fetchurl,
+  makeDesktopItem,
+  version,
+  sha256,
+}:
+let
+  src = fetchurl {
+    url = "https://github.com/Froststrap/Froststrap/releases/download/v${version}/Froststrap-linux-x64.AppImage";
+    inherit sha256;
+  };
+
+  appimageContents = appimageTools.extractType2 {
+    inherit version src;
+    pname = "averistrap";
+  };
+
+  desktopItem = makeDesktopItem {
+    name = "averistrap";
+    desktopName = "AveriStrap";
+    comment = "A cross-platform Roblox bootstrapper, focused on performance and customization.";
+    exec = "averistrap %u";
+    icon = "averistrap";
+    categories = [ "Game" ];
+    mimeTypes = [
+      "x-scheme-handler/roblox"
+      "x-scheme-handler/roblox-player"
+      "x-scheme-handler/roblox-studio"
+      "x-scheme-handler/roblox-studio-auth"
+    ];
+  };
+in
+appimageTools.wrapType2 {
+  pname = "averistrap";
+  inherit version src;
+
+  extraPkgs =
+    pkgs: with pkgs; [
+      icu
+      fontconfig
+      dbus
+    ];
+
+  # list values must end with ";". makeDesktopItem omits it.
+  extraInstallCommands = ''
+    install -Dm644 ${desktopItem}/share/applications/averistrap.desktop \
+        $out/share/applications/averistrap.desktop
+
+    sed -i -E '/^(Categories|MimeType)=/ s/([^;])$/\1;/' \
+        $out/share/applications/averistrap.desktop
+
+    install -Dm644 ${appimageContents}/usr/share/icons/hicolor/scalable/apps/AveriStrap.png \
+        $out/share/icons/hicolor/512x512/apps/averistrap.png
+  '';
+
+  meta = {
+    description = "A cross-platform Roblox bootstrapper, focused on performance and customization.";
+    homepage = "https://froststrap.xyz/";
+    license = lib.licenses.mpl20;
+    platforms = [ "x86_64-linux" ];
+  };
+}

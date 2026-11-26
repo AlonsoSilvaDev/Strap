@@ -1,0 +1,30 @@
+Licencia de AveriStrap
+Copyright (c) 2026 AlonsoSilvaDev. Todos los derechos reservados.
+
+1. Qué cubre
+   Solo lo que es propio de AveriStrap:
+   - El nombre "AveriStrap".
+   - El logo e iconos de AveriStrap (la pluma sobre el cuadrado) y las imágenes
+     hechas con ellos: AveriStrap/Resources/AveriStrap.png,
+     AveriStrap/Resources/IconAveriStrap.png,
+     AveriStrap/Resources/IconAveriStrapClassic.png, build/win.ico,
+     build/icon512.png, build/macicon512.png, build/resource/msi-*,
+     .resources/averistrap*.webp y logo.png.
+   - Los archivos originales creados para AveriStrap en
+     tools/puente-actualizacion/.
+
+2. Permisos
+   Puedes descargar y usar AveriStrap gratis. No puedes usar el nombre, el logo
+   ni los archivos del punto 1 en otro proyecto, ni venderlos, sin permiso
+   escrito del autor.
+
+3. Lo que esta licencia NO cubre
+   AveriStrap está basado en Froststrap, que deriva de Fishstrap y Bloxstrap.
+   Ese código, y los cambios hechos dentro de sus archivos, siguen bajo sus
+   propias licencias (principalmente la Mozilla Public License 2.0,
+   https://mozilla.org/MPL/2.0/) y pertenecen a sus autores. Los componentes de
+   terceros conservan las suyas. Esta licencia no cambia ni limita ninguna de
+   ellas.
+
+4. Sin garantía
+   El software se entrega "tal cual", sin garantía de ningún tipo.

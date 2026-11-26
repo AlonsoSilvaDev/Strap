@@ -1,0 +1,54 @@
+# SPDX-FileCopyrightText: 2026 Froststrap
+#
+# SPDX-License-Identifier: MPL-2.0
+
+version = 1
+
+[[annotations]]
+path = [
+    ".git*",
+    ".github/**",
+    "*.md",
+    "**/*.md",
+    "*.lock",
+    "**/*.lock",
+    "**/*.json",
+    "**/*.png",
+    "**/*.ico",
+    "**/*.bmp",
+    "**/*.jpeg",
+    "**/*.jpg",
+    "**/*.txt",
+    "**/*.config",
+    ".resources/**",
+    "packaging/macApp/**",
+    "AveriStrap/Resources/**",
+]
+SPDX-FileCopyrightText = "NONE"
+SPDX-License-Identifier = "MPL-2.0"
+
+[[annotations]]
+path = "AveriStrap/Resources/Fonts/Inter-*.ttf"
+SPDX-FileCopyrightText = "2020 The Inter Project Authors (https://github.com/rsms/inter)"
+SPDX-License-Identifier = "OFL-1.1"
+
+[[annotations]]
+path = [
+    "AveriStrap/Resources/Fonts/BuilderIcons-*.ttf",
+    "AveriStrap/Resources/Icon2008.png",
+    "AveriStrap/Resources/Icon2011.png",
+    "AveriStrap/Resources/IconEarly2015.png",
+    "AveriStrap/Resources/IconLate2015.png",
+    "AveriStrap/Resources/Icon2017.png",
+    "AveriStrap/Resources/Icon2019.png",
+    "AveriStrap/Resources/Icon2022.png",
+    "AveriStrap/Resources/Icon2025.png",
+    "AveriStrap/Resources/RobloxVerified.png",
+    "AveriStrap/Resources/BootstrapperStyles/ByfronDialog/**",
+    "AveriStrap/Resources/BootstrapperStyles/TwentyFiveDialog/**",
+    "AveriStrap/Resources/Mods/Cursor/From2006/**",
+    "AveriStrap/Resources/Mods/Cursor/From2013/**",
+    "AveriStrap/Resources/Mods/OldAvatarBackground.rbxl",
+]
+SPDX-FileCopyrightText = "Roblox Corporation"
+SPDX-License-Identifier = "LicenseRef-Roblox"

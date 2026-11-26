@@ -1,0 +1,16 @@
+﻿<!--
+SPDX-FileCopyrightText: 2026 Froststrap
+
+SPDX-License-Identifier: MPL-2.0
+-->
+
+<Solution>
+  <Project Path="./backend/backend.csproj" />
+  <Project Path="./AveriStrap/AveriStrap.csproj" />
+  <Project Path="./AveriStrap.Core/AveriStrap.Core.csproj" />
+  <Project Path="./AveriStrap.Localisation/AveriStrap.Localisation.csproj" />
+  <Project Path="./FluentAvalonia/FluentAvalonia.csproj" />
+  <Properties Name="ExtensibilityGlobals" Scope="PostLoad">
+    <Property Name="RESX_NeutralResourcesLanguage" Value="en-GB" />
+  </Properties>
+</Solution>
