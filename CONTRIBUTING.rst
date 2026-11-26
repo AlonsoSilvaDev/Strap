@@ -8,7 +8,7 @@ Contributing to AveriStrap
 Thank you for showing interest in contributing to AveriStrap!
 
 This guide covers how to build the project, what we accept, and what we expect from pull requests and issues.
-If something here is unclear or out of date, ask on our `Discord server <https://discord.gg/KdR9vpRcUN>`_.
+If something here is unclear or out of date, ask in the `issue tracker <https://github.com/AlonsoSilvaDev/Strap/issues>`_.
 
 Quick start
 ~~~~~~~~~~~
@@ -133,4 +133,4 @@ When creating an issue, you agree to the following:
 - **No duplicate issues.** Search existing issues first, including closed ones. If a previously fixed issue
   reappears in a later release, ask for the original issue to be reopened instead of opening a new one.
 - **Not everything needs to be an issue.** Questions, ideas, and general discussion often fit better on our
-  `Discord server <https://discord.gg/KdR9vpRcUN>`_.
+  `issue tracker <https://github.com/AlonsoSilvaDev/Strap/issues>`_.

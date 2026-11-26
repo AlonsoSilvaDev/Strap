@@ -20,6 +20,10 @@ internal static class GlobalViewModel
 
     public static ICommand OpenWebpageCommand => new RelayCommand<string>(OpenWebpage);
 
+    // AveriStrap todavía no tiene servidor de Discord: se avisa en vez de abrir uno
+    public static ICommand OpenDiscordCommand => new AsyncRelayCommand(
+        () => Frontend.ShowMessageBox(Strings.Dialog_DiscordNotCreated, MessageBoxImage.Information));
+
     private static void OpenWebpage(string? location)
     {
         if (string.IsNullOrEmpty(location))

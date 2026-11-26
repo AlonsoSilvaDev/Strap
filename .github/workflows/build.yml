@@ -69,16 +69,29 @@ jobs:
           path: build/target/cargo-timings/*.html
           if-no-files-found: warn
 
+      - name: Test
+        run: |
+          dotnet run --project tests/AveriStrap.Tests
+          powershell -NoProfile -ExecutionPolicy Bypass -File tests/preparar-release.test.ps1
+
+      - name: Build update bridge and collect release files
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File tools/preparar-release.ps1
+
+      # AveriStrap 1.x, la web y el bot descargan el primer .exe del release: solo puede estar el puente.
+      # Por eso no se usa "vpk upload" aqui (subiria tambien el Setup.exe). El release queda en borrador.
       - name: Upload to packages release
         if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
         run: |
-          PRE=""; [[ "$GITHUB_REF_NAME" == *-* ]] && PRE="--pre"
-          vpk upload github --repoUrl $PACKAGES_REPO --token ${{ secrets.PACKAGE_TOKEN }} --channel windows-x64 --outputDir .build/velopack --tag "$GITHUB_REF_NAME" --releaseName "$GITHUB_REF_NAME" --merge $PRE
+          PRE=""; [[ "$GITHUB_REF_NAME" == *-* ]] && PRE="--prerelease"
+          gh release view "$GITHUB_REF_NAME" --repo "$PACKAGES_REPO" > /dev/null 2>&1 || gh release create "$GITHUB_REF_NAME" --repo "$PACKAGES_REPO" --draft --verify-tag --title "AveriStrap $GITHUB_REF_NAME" --notes "" $PRE
+          gh release upload "$GITHUB_REF_NAME" .build/release/* --repo "$PACKAGES_REPO" --clobber
 
       - uses: actions/upload-artifact@v7
         with:
           name: averistrap-release-win-x64-${{ github.sha }}
-          path: .build/velopack/*
+          path: .build/release/*
 
   macos:
     runs-on: macos-26

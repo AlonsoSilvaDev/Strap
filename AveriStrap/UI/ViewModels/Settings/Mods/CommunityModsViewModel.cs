@@ -99,7 +99,7 @@ namespace AveriStrap.UI.ViewModels.Settings.Mods
                 if (App.RemoteData.LoadedState == GenericTriState.Unknown)
                     await App.RemoteData.WaitUntilDataFetched();
 
-                _allMods = App.RemoteData.Prop.CommunityMods ?? [];
+                _allMods = [.. (App.RemoteData.Prop.CommunityMods ?? []).Where(m => !Branding.IsForeignBrand(m.Name))];
                 ApplyFilters();
             }
             catch (Exception ex)

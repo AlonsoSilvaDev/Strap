@@ -146,6 +146,8 @@ internal sealed class IntegrationsViewModel : NotifyPropertyChangedViewModel
         }
     }
 
+    public static bool HasDiscordApp => ProjectInfo.HasDiscordApp;
+
     public static bool ShowUsingAveriStrapRPC
     {
         get => App.Settings.Prop.ShowUsingAveriStrapRPC;

@@ -115,7 +115,8 @@ SPDX-License-Identifier: MPL-2.0
             <controls:ToggleOption
                 Header="{x:Static resources:Strings.Menu_Integrations_AveriStrapRPC_Title}"
                 Description="{x:Static resources:Strings.Menu_Integrations_AveriStrapRPC_Description}"
-                IsChecked="{Binding ShowUsingAveriStrapRPC}" />
+                IsChecked="{Binding ShowUsingAveriStrapRPC}"
+                IsVisible="{Binding HasDiscordApp}" />
 
             <controls:CardExpander
                 Header="{x:Static resources:Strings.Common_Player}"

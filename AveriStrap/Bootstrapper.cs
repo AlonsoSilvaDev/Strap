@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: MPL-2.0
 
+using AveriStrap.Startup;
 using AveriStrap.AppData;
 using AveriStrap.Bootstrapping;
 using AveriStrap.Clients;
@@ -232,6 +233,9 @@ internal sealed class Bootstrapper : IDisposable
                 AppData.DistributionStateManager.Load();
             }
 
+            if (!_noConnection && await UpdateAveriStrapAsync())
+                return;
+
             if (!_noConnection)
             {
                 try
@@ -311,6 +315,44 @@ internal sealed class Bootstrapper : IDisposable
         finally
         {
             _appLock?.Dispose();
+        }
+    }
+
+    /// <summary>Devuelve true si el arranque debe detenerse: se está instalando AveriStrap o se canceló.</summary>
+    private async Task<bool> UpdateAveriStrapAsync()
+    {
+        var request = new LaunchUpdateRequest
+        {
+            Setting = App.Settings.Prop.UpdateChecks,
+            Args = App.LaunchSettings.Args,
+            IsCiBuild = UpdaterManager.IsCiBuild,
+            IsBackgroundProcess = LaunchSettings.BypassUpdateCheck,
+            OtherInstancesRunning = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Paths.Process)).Length > 1,
+            LastAttemptedVersion = App.State.Prop.LaunchUpdateAttempt,
+        };
+
+        try
+        {
+            LaunchUpdateResult result = await LaunchUpdate.RunAsync(
+                request,
+                new VelopackLaunchUpdateSource(request.Setting),
+                _cancelTokenSource.Token,
+                onFound: version =>
+                {
+                    App.Logger.Info($"Updating {ProjectInfo.Name} to {version} before launching");
+                    SetStatus(Strings.Bootstrapper_Status_Upgrading.Replace("{product}", ProjectInfo.Name, StringComparison.Ordinal));
+                },
+                onError: ex => App.Logger.Error(ex, "Update before launch failed, launching with the current version"));
+
+            if (result != LaunchUpdateResult.Failed)
+                return result == LaunchUpdateResult.Restarting;
+
+            SetStatus(Strings.Bootstrapper_Status_Connecting);
+            return false;
+        }
+        catch (OperationCanceledException)
+        {
+            return true;
         }
     }
 

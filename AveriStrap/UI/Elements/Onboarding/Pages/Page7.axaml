@@ -74,8 +74,7 @@ SPDX-License-Identifier: MPL-2.0
 
                 <controls:CardAction Header="Discord"
                                      Icon="MessageCircleMore"
-                                     Command="{x:Static models:GlobalViewModel.OpenWebpageCommand}"
-                                     CommandParameter="https://discord.gg/KdR9vpRcUN"
+                                     Command="{x:Static models:GlobalViewModel.OpenDiscordCommand}"
                                      Grid.Row="2"
                                      Grid.Column="1"
                                      Margin="4,0,0,0" />

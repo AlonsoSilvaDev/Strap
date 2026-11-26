@@ -56,27 +56,32 @@ internal static class LaunchHandler
             return;
         }
 
-        if (App.State.Prop.IsFirstLaunch)
-        {
-            App.Logger.Info("First launch detected, launching onboarding");
-            LaunchOnboarding();
-            return;
-        }
+        LaunchRoute route = LaunchRouting.Decide(
+            App.State.Prop.IsFirstLaunch,
+            App.LaunchSettings.SettingsFlag.Active,
+            App.LaunchSettings.RobloxLaunchMode);
 
-        if (App.LaunchSettings.SettingsFlag.Active)
+        switch (route)
         {
-            App.Logger.Info("Opening settings");
-            LaunchSettings(quitIfAlreadyRunning: true);
-        }
-        else if (App.LaunchSettings.RobloxLaunchMode != LaunchMode.None)
-        {
-            App.Logger.Info($"Opening bootstrapper ({App.LaunchSettings.RobloxLaunchMode})");
-            _ = LaunchRoblox(App.LaunchSettings.RobloxLaunchMode);
-        }
-        else
-        {
-            App.Logger.Info($"Opening menu");
-            LaunchMenu();
+            case LaunchRoute.Onboarding:
+                App.Logger.Info("First launch detected, launching onboarding");
+                LaunchOnboarding();
+                break;
+
+            case LaunchRoute.Settings:
+                App.Logger.Info("Opening settings");
+                LaunchSettings(quitIfAlreadyRunning: true);
+                break;
+
+            case LaunchRoute.Roblox:
+                App.Logger.Info($"Opening bootstrapper ({App.LaunchSettings.RobloxLaunchMode})");
+                _ = LaunchRoblox(App.LaunchSettings.RobloxLaunchMode);
+                break;
+
+            default:
+                App.Logger.Info($"Opening menu");
+                LaunchMenu();
+                break;
         }
     }
 
@@ -125,7 +130,7 @@ internal static class LaunchHandler
                 if (!App.StudioState.Loaded)
                     _ = Task.Run(() => App.StudioState.Prop);
 
-                if (App.Settings.Prop.ShowUsingAveriStrapRPC && App.AveriRPC == null)
+                if (ProjectInfo.HasDiscordApp && App.Settings.Prop.ShowUsingAveriStrapRPC && App.AveriRPC == null)
                 {
                     App.AveriRPC = new AveriStrapRichPresence();
                 }
@@ -246,7 +251,7 @@ internal static class LaunchHandler
         {
             App.Logger.Info($"Launch menu ready after {Program.StartupTimer.ElapsedMilliseconds} ms");
 
-            if (App.Settings.Prop.ShowUsingAveriStrapRPC && App.AveriRPC == null)
+            if (ProjectInfo.HasDiscordApp && App.Settings.Prop.ShowUsingAveriStrapRPC && App.AveriRPC == null)
             {
                 App.AveriRPC = new AveriStrapRichPresence();
                 App.AveriRPC.SetPage("Launch Menu");
@@ -298,7 +303,7 @@ internal static class LaunchHandler
 
         mainWindow.Loaded += (s, e) =>
         {
-            if (App.Settings.Prop.ShowUsingAveriStrapRPC && App.AveriRPC == null)
+            if (ProjectInfo.HasDiscordApp && App.Settings.Prop.ShowUsingAveriStrapRPC && App.AveriRPC == null)
             {
                 App.AveriRPC = new AveriStrapRichPresence();
                 App.AveriRPC.SetPage("Onboarding");

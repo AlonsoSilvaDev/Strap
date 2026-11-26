@@ -86,8 +86,7 @@ SPDX-License-Identifier: MPL-2.0
                     Height="56"
                     BorderThickness="0"
                     IconSize="24"
-                    Command="{x:Static models:GlobalViewModel.OpenWebpageCommand}"
-                    CommandParameter="https://discord.gg/KdR9vpRcUN"
+                    Command="{x:Static models:GlobalViewModel.OpenDiscordCommand}"
                     Padding="12,10" />
             </Grid>
         </StackPanel>

@@ -128,7 +128,6 @@ namespace AveriStrap.UI.ViewModels.Settings
                     OnPropertyChanged(nameof(SelectedLanguage));
 
                     Locale.Set(identifier);
-                    App.LoadRemoteTranslations();
                 }
             }
         }

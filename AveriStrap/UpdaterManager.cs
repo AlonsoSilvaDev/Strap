@@ -81,5 +81,6 @@ internal sealed class UpdaterManager(bool includePrerelease = false)
         cancellationToken
     );
 
-    public void ApplyUpdatesAndRestart(UpdateInfo update) => manager.ApplyUpdatesAndRestart(update);
+    public void ApplyUpdatesAndRestart(UpdateInfo update, string[]? restartArgs = null)
+        => manager.ApplyUpdatesAndRestart(update, restartArgs);
 }

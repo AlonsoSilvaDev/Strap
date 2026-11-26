@@ -217,6 +217,7 @@
   "CustomTheme_Templates_Blank_MoreExamples": "Examples of custom bootstrappers can be found at {0}.",
   "CustomTheme_Templates_Blank_UIElements": "Put UI elements here",
   "CustomTheme_Templates_Simple_MoreExamples": "Find more custom bootstrapper examples at {0}.",
+  "Dialog_DiscordNotCreated": "The AveriStrap Discord server has not been created yet.",
   "Dialog_AddFastFlag_Title": "Add Fast Flag",
   "Dialog_AlreadyRunning_Uninstaller": "Please wait for uninstallation to finish.",
   "Dialog_CannotCreateShortcuts": "AveriStrap was unable to create shortcuts. Try creating them later through the settings.",

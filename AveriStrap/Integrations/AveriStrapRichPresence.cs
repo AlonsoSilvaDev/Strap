@@ -29,7 +29,7 @@ namespace AveriStrap.Integrations
             INamedPipeClient? pipeClient = DiscordIpcPipeClient.Create();
             try
             {
-                _rpcClient = new DiscordRpcClient("1399535282713399418", -1, new NullLogger(), true, pipeClient)
+                _rpcClient = new DiscordRpcClient(ProjectInfo.DiscordAppId, -1, new NullLogger(), true, pipeClient)
                 {
                     SkipIdenticalPresence = true,
                     ShutdownOnly = true
@@ -121,15 +121,14 @@ namespace AveriStrap.Integrations
                 Timestamps = _startTimestamps,
                 Assets = new Assets
                 {
-                    LargeImageKey = "froststrap",
+                    LargeImageKey = "averistrap",
                     LargeImageText = "AveriStrap",
                     SmallImageKey = "checkmark",
                     SmallImageText = DiscordPresenceHelper.Truncate($"{App.Version}", 128)
                 },
                 Buttons =
                 [
-                    new Button { Label = "GitHub", Url = "https://github.com/AlonsoSilvaDev/Strap" },
-                    new Button { Label = "Discord", Url = "https://discord.gg/KdR9vpRcUN" }
+                    new Button { Label = "GitHub", Url = "https://github.com/AlonsoSilvaDev/Strap" }
                 ]
             };
 

@@ -185,6 +185,7 @@
   "CustomTheme_Templates_Blank_MoreExamples": "En {0} se pueden encontrar ejemplos de programas de arranque personalizados.",
   "CustomTheme_Templates_Blank_UIElements": "Coloca aquí los elementos de la interfaz de usuario",
   "CustomTheme_Templates_Simple_MoreExamples": "Encuentra más ejemplos personalizados de Bootstrapper en {0}",
+  "Dialog_DiscordNotCreated": "El servidor de Discord de AveriStrap aún no está creado.",
   "Dialog_AddFastFlag_Title": "Añadir la bandera «Rápido»",
   "Dialog_AlreadyRunning_Uninstaller": "Por favor, espera a que finalice la desinstalación.",
   "Dialog_CannotCreateShortcuts": "AveriStrap no ha podido crear accesos directos en el escritorio ni en el menú de inicio. Intenta crearlos más tarde a través de la configuración.",

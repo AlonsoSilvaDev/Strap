@@ -28,7 +28,6 @@ namespace AveriStrap.UI.ViewModels.Onboarding
             string identifier = Locale.GetIdentifierFromName(SelectedLanguage);
             Locale.Set(identifier);
             App.Settings.Prop.Locale = identifier;
-            App.LoadRemoteTranslations();
         }
     }
 }

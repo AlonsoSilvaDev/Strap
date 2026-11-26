@@ -25,6 +25,9 @@ namespace AveriStrap.Models.Persistable
 
         public string? PendingUpdateVersion { get; set; }
 
+        // versión que se intentó instalar al abrir Roblox; evita reintentar en bucle
+        public string? LaunchUpdateAttempt { get; set; }
+
         public string? PendingUpdateReleaseNotes { get; set; }
 
         public List<ModConfig> Mods { get; set; } = [];
